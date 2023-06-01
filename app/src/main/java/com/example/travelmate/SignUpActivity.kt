@@ -39,6 +39,7 @@ class SignUpActivity : AppCompatActivity() {
             var password = mpass.text.toString().trim()
             var rpassword = mrpass.text.toString().trim()
             var user = muser.text.toString().trim()
+
             // check if user is submitting empty field
             if (email.isEmpty()){
                 mEmail.error = "please fill this input"
