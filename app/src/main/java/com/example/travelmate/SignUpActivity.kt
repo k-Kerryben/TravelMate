@@ -54,10 +54,16 @@ class SignUpActivity : AppCompatActivity() {
                 mrpass.error = "please fill this input"
                 mrpass.requestFocus()}
             else if (rpassword != password){mrpass.error = "Passwords do not match!!"
-            }else{
+            }else if (password.length < 6){
+                mpass.error = "Password less than six characters!!"
+                mpass.requestFocus()
+            }
+
+            else{
                 // proceed to register the user
                 progress.show()
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
+
                     progress.dismiss()
                     if (it.isSuccessful){
                         Toast.makeText(this, "Registration Successfull 🥳🥳", Toast.LENGTH_SHORT).show()

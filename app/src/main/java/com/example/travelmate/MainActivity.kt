@@ -51,10 +51,10 @@ class MainActivity : AppCompatActivity() {
             var password = mpass.text.toString().trim()
             // check if user is submitting empty field
             if (email.isEmpty()) {
-                mEmail.setError("please fill this input")
+                mEmail.error = "please fill this input"
                 mEmail.requestFocus()
             } else if (password.isEmpty()) {
-                mpass.setError("please fill this input")
+                mpass.error = "please fill this input"
                 mpass.requestFocus()
             } else {
                 // proceed to register the user
@@ -62,9 +62,9 @@ class MainActivity : AppCompatActivity() {
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
                     progress.dismiss()
                     if (it.isSuccessful){
-                        Toast.makeText(this, "Registration Successfull 🥳🥳", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Successful Login", Toast.LENGTH_SHORT).show()
                         //mAuth.signOut()
-                        startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, HomeActivity::class.java))
                         finish()
                     }else{
                         displayMessage("ERROR", it.exception!!.message.toString())
