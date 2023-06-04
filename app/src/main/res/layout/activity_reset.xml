@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResetActivity"
+    android:layout_centerInParent="true"
+    android:background="@drawable/bgg">
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:background="#8BB8CC"
+        android:id="@+id/reset_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
+        android:fontFamily="serif-monospace"
+        android:gravity="center"
+        android:text="Reset password"
+        android:textColor="#FF0000"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:inputType="textPassword"
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reset_txt"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#021F37"
+        android:drawableLeft="@drawable/baseline_security_24"
+        android:drawablePadding="15dp"
+        android:hint="New Password"
+        android:padding="20dp"
+        android:shadowRadius="10"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/rpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#021F37"
+        android:drawableLeft="@drawable/baseline_security_24"
+        android:drawablePadding="15dp"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:padding="20dp"
+        android:shadowRadius="10"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        android:textStyle="italic" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/reset_btn"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rpassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#073145"
+        android:text="Reset Password" />
+
+</RelativeLayout>
