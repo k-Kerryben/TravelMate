@@ -22,12 +22,33 @@
         android:textSize="35sp"
         android:textStyle="bold" />
 
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reset_txt"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#021F37"
+        android:drawableLeft="@drawable/baseline_email_24"
+        android:drawablePadding="15dp"
+        android:hint="Email Address"
+        android:padding="20dp"
+        android:shadowRadius="10"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        android:textStyle="italic" />
+
     <EditText
         android:inputType="textPassword"
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/reset_txt"
+        android:layout_below="@id/email"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"

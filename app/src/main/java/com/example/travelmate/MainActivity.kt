@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         mreset.setOnClickListener{
-
+        startActivity(Intent(this, ResetActivity::class.java))
         }
         login.setOnClickListener {
             // start by receiving data from user

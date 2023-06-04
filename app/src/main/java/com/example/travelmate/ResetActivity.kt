@@ -1,98 +1,84 @@
-package com.example.travelmate
-
 import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import com.example.travelmate.R
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.actionCodeSettings
 
 class ResetActivity : AppCompatActivity() {
-    private lateinit var fAuth: FirebaseAuth
-    lateinit var pass:EditText
-    lateinit var reset_btn:Button
-    lateinit var reset_txt:TextView
-    lateinit var rpass:EditText
+
+    private lateinit var emailEditText: EditText
+    private lateinit var newPasswordEditText: EditText
+    private lateinit var confirmPasswordEditText: EditText
+    private lateinit var resetPasswordButton: Button
+
+    private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reset)
 
-        pass = findViewById(R.id.password)
-        rpass = findViewById(R.id.rpassword)
-        reset_btn = findViewById(R.id.reset_btn)
-        reset_txt = findViewById(R.id.reset_txt)
+        // Initialize Firebase
+        FirebaseApp.initializeApp(this)
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        reset_btn.setOnClickListener {
+        // Initialize views
+        emailEditText = findViewById(R.id.email)
+        newPasswordEditText = findViewById(R.id.password)
+        confirmPasswordEditText = findViewById(R.id.rpassword)
+        resetPasswordButton = findViewById(R.id.reset_btn)
+
+        resetPasswordButton.setOnClickListener {
             resetPassword()
         }
-
-
     }
 
     private fun resetPassword() {
+        val email = emailEditText.text.toString()
+        val newPassword = newPasswordEditText.text.toString()
+        val confirmPassword = confirmPasswordEditText.text.toString()
 
-        val newPassword = pass.text.toString()
-        val confirmPassword = rpass.text.toString()
-
-        // Validate password fields
-        if (newPassword.isEmpty() || confirmPassword.isEmpty()) {
-            Toast.makeText(this, "Please enter a new password and confirm it.", Toast.LENGTH_SHORT).show()
+        // Validate input fields
+        if (email.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            Toast.makeText(this, "Please fill in all the fields.", Toast.LENGTH_SHORT).show()
             return
         }
 
-        if (newPassword != confirmPassword) {
-            Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        // Reset password and send email
-        val user = fAuth.currentUser
-        user?.let {
-            user.updatePassword(newPassword)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        sendPasswordResetEmail(user.email.toString())
-                        showNotification("Password Reset", "A password reset email has been sent to ${user.email}.")
-                    } else {
-                        Toast.makeText(this, "Failed to reset password: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-        }
-    }
-
-    private fun sendPasswordResetEmail(email: String) {
-        val actionCodeSettings = actionCodeSettings {
-            url = "https://yourwebsite.com/reset-password"
-            handleCodeInApp = true
-        }
-
-        fAuth.sendPasswordResetEmail(email, actionCodeSettings)
+        // Check if the email exists in Firebase Authentication database
+        firebaseAuth.fetchSignInMethodsForEmail(email)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Password reset email sent successfully
+                    val signInMethods = task.result?.signInMethods
+                    if (signInMethods.isNullOrEmpty()) {
+                        // Email address does not exist in the database
+                        Toast.makeText(this, "Email address not found.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        // Email address found, reset password and send email
+                        firebaseAuth.sendPasswordResetEmail(email)
+                            .addOnCompleteListener { resetTask ->
+                                if (resetTask.isSuccessful) {
+                                    showNotification("Password Reset", "A password reset email has been sent to $email.")
+                                } else {
+                                    Toast.makeText(this, "Failed to send password reset email: ${resetTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                    }
                 } else {
-                    Toast.makeText(this, "Failed to send password reset email: ${task.exception?.message}", Toast.LENGTH_SHORT)
-
-
-
-
-
-
+                    Toast.makeText(this, "Failed to check email address: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
-
             }
     }
-
 
     private fun showNotification(title: String, message: String) {
         // Create a notification channel (required for Android 8.0+)
@@ -129,6 +115,4 @@ class ResetActivity : AppCompatActivity() {
         }
         notificationManager.notify(0, notification)
     }
-
-
 }
