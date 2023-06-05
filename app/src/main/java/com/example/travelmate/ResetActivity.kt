@@ -1,3 +1,5 @@
+package com.example.travelmate
+
 import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -5,18 +7,16 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.example.travelmate.R
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 
-class ResetActivity : AppCompatActivity() {
+class ResetActivity: AppCompatActivity() {
 
     private lateinit var emailEditText: EditText
     private lateinit var newPasswordEditText: EditText

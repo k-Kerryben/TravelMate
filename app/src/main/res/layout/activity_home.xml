@@ -4,17 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:background="@drawable/bgg">
 
-    <View
+    <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="9dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="9dp"
-        android:background="@drawable/bg_view">
-    </View>
+        android:background="@drawable/bg_view"
+        >
+        <ImageView
+
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_home"
+            android:layout_width="70dp"
+            android:layout_height="70dp"/>
+        <TextView
+            android:layout_marginTop="12dp"
+            android:fontFamily="serif-monospace"
+            android:textStyle="bold"
+            android:textSize="40sp"
+            android:text="Welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="115dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:background="#97D9E1"
+        android:layout_marginTop="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="30dp"
+            android:src="@drawable/baseline_search_24"
+            android:layout_width="70dp"
+            android:layout_height="70dp"/>
+
+        <ImageView
+            android:layout_margin="30dp"
+            android:src="@drawable/baseline_local_grocery_store_24"
+            android:layout_width="70dp"
+            android:layout_height="70dp"/>
+
+        <ImageView
+            android:layout_margin="30dp"
+            android:src="@drawable/ic_explore"
+            android:layout_width="70dp"
+            android:layout_height="70dp"/>
 
 
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="52dp"
+        android:src="@drawable/ic_profile" />
+
+    <!--    <ImageView-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:layout_marginEnd="30dp"-->
+<!--        android:layout_marginRight="15dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:src="@drawable/baseline_logout_24" />-->
 </RelativeLayout>

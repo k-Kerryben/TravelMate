@@ -13,7 +13,7 @@
         android:theme="@style/Theme.TravelMate"
         tools:targetApi="31">
         <activity
-            android:name=".ResetActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".Home2Activity"
