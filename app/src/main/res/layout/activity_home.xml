@@ -8,13 +8,8 @@
     android:background="@drawable/bgg">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="9dp"
         android:background="@drawable/bg_view"
         >
         <ImageView
@@ -46,28 +41,51 @@
         android:layout_height="120dp"
         android:orientation="horizontal">
         <ImageView
-            android:layout_margin="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
             android:src="@drawable/baseline_search_24"
-            android:layout_width="70dp"
-            android:layout_height="70dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
 
         <ImageView
             android:layout_margin="30dp"
             android:src="@drawable/baseline_local_grocery_store_24"
-            android:layout_width="70dp"
-            android:layout_height="70dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
 
         <ImageView
-            android:layout_margin="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/ic_explore"
-            android:layout_width="70dp"
-            android:layout_height="70dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
 
-
-
+        <ImageView
+            android:id="@+id/camera"
+            android:layout_margin="30dp"
+            android:src="@drawable/ic_menu_camera"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_marginTop="260dp"
+        android:layout_width="500dp"
+        android:layout_height="200dp"
+        android:background="@drawable/items"
+        android:orientation="horizontal">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/layout1"
+        android:layout_marginTop="30dp"
+        android:layout_width="500dp"
+        android:layout_height="200dp"
+        android:background="@drawable/items">
     </LinearLayout>
 
+
     <ImageView
+        android:id="@+id/profile_page"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentRight="true"
