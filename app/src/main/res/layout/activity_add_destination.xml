@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddDestinationActivity"
+    >
+
+
+    <EditText
+        android:id="@+id/destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#021F37"
+        android:drawablePadding="15dp"
+        android:hint="Destination"
+        android:padding="20dp"
+        android:shadowRadius="10"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/destination"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#021F37"
+        android:drawablePadding="15dp"
+        android:ems="10"
+        android:hint="Duration of Stay"
+        android:inputType="text"
+        android:padding="20dp"
+        android:shadowRadius="10"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/weather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/duration"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
+        android:background="#021F37"
+        android:drawablePadding="15dp"
+        android:ems="10"
+        android:hint="Weather conditions of the place"
+        android:inputType="text"
+        android:padding="20dp"
+        android:shadowRadius="10"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        android:textStyle="italic" />
+
+    <ImageView
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/weather"
+        android:id="@+id/add_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/image" />
+
+    <Button
+        android:id="@+id/upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:text="Upload" />
+
+</RelativeLayout>
