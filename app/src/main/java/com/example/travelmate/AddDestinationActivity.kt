@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.IOException
@@ -62,7 +63,27 @@ class AddDestinationActivity : AppCompatActivity() {
             if (iiweather.isEmpty()){iweather.error = "Input required"}
             else{
                 if (file_path == null){Toast.makeText(applicationContext, "Image Required", Toast.LENGTH_SHORT).show()}
-                else{var ref = storage_reference.child()}
+                else{var ref= storage_reference.child("Destination/$imageID")
+                progress.show()
+                ref.putFile(file_path).addOnCompleteListener{
+                   progress.dismiss()
+                   if(it.isSuccessful){
+                       ref.downloadUrl.addOnCompleteListener{
+                           var imageurl = it.toString()
+                           var  destinationdata = com.example.travelmate.Destination(idestination, iduration, iweather,userID!!,imageurl, imageID)
+                           var dbRef = FirebaseDatabase.getInstance()
+                                .getReference().child("Destination/$imageID")
+                           dbRef.setValue(destinationdata)
+                           Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
+
+                       }
+                   }else
+                   {
+                       Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                   }
+
+                }
+                }
             }
 
         }

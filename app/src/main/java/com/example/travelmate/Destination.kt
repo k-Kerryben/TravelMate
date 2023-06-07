@@ -1,24 +1,29 @@
 package com.example.travelmate
 
+import android.widget.EditText
+
 class Destination {
     var destination:String = ""
     var duration:String = ""
     var weather:String = ""
     var userID:String = ""
     var destinationID:String =""
+    var imagedes:String = ""
 
     constructor(
-        destination: String,
-        duration: String,
-        weather: String,
+        destination: EditText,
+        duration: EditText,
+        weather: EditText,
         userID: String,
-        destinationID: String
+        destinationID: String,
+        imagedes: String
     ) {
-        this.destination = destination
-        this.duration = duration
-        this.weather = weather
+        this.destination = destination.toString()
+        this.duration = duration.toString()
+        this.weather = weather.toString()
         this.userID = userID
         this.destinationID = destinationID
+        this.imagedes = imagedes
     }
     constructor()
 }
