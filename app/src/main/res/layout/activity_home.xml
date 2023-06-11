@@ -14,10 +14,10 @@
         >
         <ImageView
 
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:src="@drawable/ic_home"
-            android:layout_width="70dp"
-            android:layout_height="70dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
         <TextView
             android:layout_marginTop="23dp"
             android:fontFamily="serif-monospace"
@@ -74,7 +74,13 @@
         android:layout_width="500dp"
         android:layout_height="200dp"
         android:background="@drawable/items"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="fill"
+        >
+        <ImageView
+            android:src="@drawable/add_destination"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
     <LinearLayout
         android:layout_below="@+id/layout1"

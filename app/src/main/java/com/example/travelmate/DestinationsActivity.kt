@@ -22,7 +22,7 @@ class DestinationsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_destinations)
         listDestination = findViewById(R.id.list_destin)
         destination_s = ArrayList()
-        adapter = CustomAdapter(this, Destination)
+        adapter = CustomAdapter(this, data = destination_s)
         progress = ProgressDialog(this)
         progress.setTitle("Loading")
         progress.setMessage("Loading")

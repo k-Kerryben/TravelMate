@@ -1,4 +1,9 @@
 <resources>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="username_format">Username: %s</string>
+    <string name="email_format">Email: %s</string>
+
     <string name="app_name">TravelMate</string>
     <string name="home">Home</string>
     <string name="explore">Explore</string>
